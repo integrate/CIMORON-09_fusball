@@ -1,4 +1,4 @@
-import pygame,random
+import pygame,random,upravlaem
 sopernik=pygame.Rect((300, 100, 225, 55))
 platforma = pygame.Rect(0, 555, 225, 55)
 krug = pygame.Rect(0, 555, 40, 40)
@@ -10,8 +10,6 @@ skorost_sopernika=random.randint(1,5)
 def dvizhenie():
     global speedy, speedx,skorost_sopernika
     sopernik.x = sopernik.x +skorost_sopernika
-    print(skorost_sopernika)
-
     # Они не дают прямоугольнику выйти за с границы окна
     if platforma.y < 0:
         platforma.y = 0
@@ -72,10 +70,11 @@ def dvizhenie():
         speedy=0
         speedx=0
         print("голь варота 1")
+        upravlaem.zapusk_timer()
 
     rey = vorota2.colliderect(krug)
     if rey == 1 and speedy > 0:
         speedy = 0
         speedx = 0
-
         print("голь варота 2")
+        upravlaem.zapusk_timer()
