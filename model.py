@@ -1,12 +1,12 @@
 import pygame,random
-sopernik=pygame.Rect((300, 300, 225, 55))
+sopernik=pygame.Rect((300, 100, 225, 55))
 platforma = pygame.Rect(0, 555, 225, 55)
 krug = pygame.Rect(0, 555, 40, 40)
-speedx = 50
-speedy = 50
+speedx = 2
+speedy = 2
 vorota1=pygame.Rect(200,0,200,30)
 vorota2=pygame.Rect(200, 770, 200, 30)
-skorost_sopernika=random.randint(1,10)
+skorost_sopernika=random.randint(1,5)
 def dvizhenie():
     global speedy, speedx,skorost_sopernika
     sopernik.x = sopernik.x +skorost_sopernika
@@ -61,6 +61,11 @@ def dvizhenie():
     if ll == 1 and speedy > 0:
         speedy = -15
         krug.bottom = platforma.y
+
+    ll = krug.colliderect(sopernik)
+    if ll == 1 and speedy<0:
+        speedy = +15
+        krug.y = sopernik.bottom
 
     tyu = vorota1.colliderect(krug)
     if tyu == 1 and speedy > 0:
