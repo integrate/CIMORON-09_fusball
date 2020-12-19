@@ -1,6 +1,8 @@
-import pygame, model
+import pygame, model,random
 
-TIMER_ID=pygame.event.custom_type()
+TIMER_ID = pygame.event.custom_type()
+
+
 def obrabotka_sobitiy():
     # обработка событий
     lodka = pygame.event.get()
@@ -15,7 +17,7 @@ def obrabotka_sobitiy():
 
             if did.key == pygame.K_d:
                 model.platforma.x = model.platforma.x + 10
-        if did.type==TIMER_ID:
-            print("5u74457747")
-def zapusk_timer ():
-    pygame.time.set_timer(TIMER_ID,5000,True)
+        if did.type == TIMER_ID:
+            model.restart()
+def zapusk_timer():
+    pygame.time.set_timer(TIMER_ID, 5000, True)
