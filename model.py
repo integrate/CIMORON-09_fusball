@@ -5,8 +5,8 @@ platforma = pygame.Rect(0, 555, 225, 55)
 krug = pygame.Rect(0, 555, 40, 40)
 speedx = 2
 speedy = 2
-vorota_1 = pygame.Rect(200, 0, 200, 30)
-vorota_2 = pygame.Rect(200, 770, 200, 30)
+vorota_verh = pygame.Rect(212, 0, 182, 45)
+vorota_niz = pygame.Rect(212, 755, 182, 45)
 skorost_sopernika = random.randint(1, 5)
 
 
@@ -68,17 +68,19 @@ def dvizhenie():
         speedy = +15
         krug.y = sopernik.bottom
 
-    tyu = vorota_1.colliderect(krug)
+    tyu = vorota_verh.colliderect(krug)
     if tyu == 1 and speedy > 0:
         speedy = 0
         speedx = 0
         print("голь варота 1")
         upravlaem.zapusk_timer()
 
-    rey = vorota_2.colliderect(krug)
+    rey = vorota_niz.colliderect(krug)
     if rey == 1 and speedy > 0:
         speedy = 0
         speedx = 0
+        krug.y=760
+        krug.x=300
         print("голь варота 2")
         upravlaem.zapusk_timer()
 def restart():
